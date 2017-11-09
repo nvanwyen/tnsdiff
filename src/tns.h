@@ -96,15 +96,22 @@ class tns
                 }
 
                 //
+                bool operator%=( const entry& ent ) const
+                {
+                    return ( ( lcase( name ) == lcase( ent.name ) )
+                          && ( lcase( desc ) == lcase( ent.desc ) ) );
+                }
+
+                //
                 bool operator==( const entry& ent ) const
                 {
-                    return name == ent.name;
+                    return lcase( name ) == lcase( ent.name) ;
                 }
 
                 //
                 bool operator<( const entry& ent ) const
                 {
-                    return name < ent.name;
+                    return lcase( name ) < lcase( ent.name) ;
                 }
 
                 //
@@ -302,8 +309,8 @@ class tns
         std::string rtrim( std::string str );
 
         //
-        std::string lcase( std::string str );
-        std::string ucase( std::string str );
+        static std::string lcase( std::string str );
+        static std::string ucase( std::string str );
 
         //
         std::string split( std::string str, int idx, std::string tok = "," );

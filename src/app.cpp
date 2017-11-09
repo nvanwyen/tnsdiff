@@ -138,9 +138,9 @@ void app::usage( bool hlp /*= false*/ )
         //
         std::cout << "notes:" << std::endl;
         std::cout << "   * The \"Left\" and \"Right\" sources cannot be the same. Error when detected." << std::endl;
-        std::cout << "   * As defined by Oracle, LDAP access must be anonymous. No DN/passwords needed" << std::endl;
-        std::cout << "   * This utility will *not* retain file or in-line comments when merging files." << std::endl;
-        std::cout << "   * Required by the Oracle client, the file \"$ORACLE_HOME/ldap/mesg/ldapus.msb\"" << std::endl;
+        std::cout << "   * As defined by Oracle, LDAP access must be anonymous. No DN/password needed" << std::endl;
+        std::cout << "   * This utility will *not* retain file or in-line comments when merging." << std::endl;
+        std::cout << "   * Required by Oracle client, the file \"$ORACLE_HOME/ldap/mesg/ldapus.msb\"" << std::endl;
         std::cout << "     must exist. This file can be empty (e.g. use touch to create) as this" << std::endl;
         std::cout << "     utility does not need the contents to exist; but the Oracle libraries must" << std::endl;
         std::cout << "     find a file at that location, otherwise an error is thrown, when LDAP is" << std::endl;
@@ -460,8 +460,8 @@ size_t app::load_differences( mti::tns::entries& lft,
         //
         if ( rt != rgt.end() )
         {
-            //
-            if ( (*rt).desc != (*lt).desc )
+            // equal in all respect (name + desc)
+            if ( ! ( (*rt) %= (*lt) ) )
                 chg.push_back( app::result( app::item( (*lt), lt - lft.begin() ),
                                             app::item( (*rt), rt - rgt.begin() ),
                                             app::result::changed ) );
