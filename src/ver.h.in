@@ -1,0 +1,55 @@
+//
+// ver.h
+// ~~~~~~~~~~~~~~~~~~~~~
+//
+// Copyright (c) 2004-2013 Metasystems Technologies Inc. (MTI)
+// All rights reserved
+//
+// Distributed under the MTI Software License, Version 0.1.
+//
+// as defined by accompanying file MTI-LICENSE-0.1.info or
+// at http://www.mtihq.com/license/MTI-LICENSE-0.1.info
+//
+
+#ifndef __VER_H
+#define __VER_H
+
+// c
+
+// c++
+#include <string>
+
+// boost
+
+// local
+
+//
+#if defined(DOS) || defined(WINDOWS) || defined(WIN32) || defined(_WIN32) || defined(WINSOCK)
+#pragma warning( disable : 4996 )
+#endif
+
+//
+#define APPLICATION         "TNS Difference and Merging"
+#define VERSION             "@TNSDIFF_VERSION@"
+#define CORPORATION         "Metasystems Technologies Inc. (MTI)"
+#define COPYWRITE           "Copyright (c) 2004, 2017, MTI.  All rights reserved."
+
+//
+void version(const char* name);
+
+//
+void copyright();
+
+//
+std::string now();
+
+//
+std::string stamp();
+
+//
+std::string password();
+
+//
+bool exists( std::string file );
+
+#endif // __VER_H
